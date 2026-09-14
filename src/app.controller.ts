@@ -21,15 +21,4 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('clases')
-  listar(): Clase[] {
-    return clases;
-  }
-
-  @Post('clases')
-  crear(@Body() cuerpo: {nombre: string}): Clase {
-    const nueva: Clase = { id: clases.length + 1, nombre: cuerpo.nombre }
-    clases.push(nueva);
-    return nueva;
-  }
 }

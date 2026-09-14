@@ -21,6 +21,43 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+## Preguntas Práctica 6.
+**1. Responder: ¿qué pasaría si el módulo no quedara registrado en la raíz?**
+Si no metiera el módulo en el imports del AppModule, nest no sabría que existe, entonces las rutas de ese controller no funcionarían, ni se podría inyectar su service en otro lado.
+
+**2. Responder: ¿por qué los métodos del repositorio devuelven promesas si los datos van a estar en memoria?**
+Porque se hizo de manera que se pueda cambiar a una base de datos real, entonces si desde ahorita ponemos promesas, cuando cambiemos a una base de datos de verdad, no vamos a tener que cambiar cosas del service ni del controller.
+
+**3. Responder: ¿qué error apareció al cambiar a la interfaz, y por qué la clase sí se había resuelto sola?**
+Algo de "Nest cant resolve dependencies...", que es porque las interfaces de typescript, al pasar a javascript ya no existen, se borran al compilar, y con las clases no pasa eso porque esas si existen en javascript.
+
+**4. Responder: ¿por qué el servicio necesita un token para el repositorio, pero el controlador no lo necesita para el servicio?**
+Porque el service depende de una interfaz y esa desaparece al compilar, por eso hay que inventarnos un token. Como el controller inyecta una clase, y eso si existe en tiempo real, no se necesita.
+
+**6. Responder: ¿cuál es la diferencia entre un 400 y un 409?**
+El 400 es cuando la petición viene mal armada, que le faltan datos; y el 409 es cuando la petición sí está bien pero se topa con una regla, como que el horario ya no tiene cupo.
+
+**7. Responder: ¿por qué cambió el código de estado de esa última petición?**
+Porque al cancelar la inscripción, su estado pasa a "cancelada" y las reglas de negocio ignoran las que están canceladas, entonces esa cancelación libera un lugar y deja libre a la persona, por eso la petición que lanzaba 409 ahora sí se puede hacer.
+
+
+
+## Preguntas Práctica 5.
+**1. Responder: ¿qué generó el comando nest new?**
+La estructura base de un proyecto NestJS: package.json con dependencias, configuración TypeScript (tsconfig), y de Nest, la carpeta src con los archivos como main.ts, y la carpeta test con las pruebas.
+
+**2. Responder: ¿qué hace el AppService que ya viene generado?**
+Es una clase con @Injectable con un método que regresa un texto. El controller lo recibe por el constructor con inyección de dependencias y devuelve el texto cuando alguien entra a la ruta.
+
+**3. Responder: ¿por qué la ruta funciona sin declarar nada en app.module.ts?**
+Porque el controller ya está registrado en el módulo desdeque se creó el proyecto, entonces cualquier ruta nueva Nest la detecta sola.
+
+**4. Responder: ¿qué pasaría si el cuerpo de la petición viniera vacío?**
+La clase igual se agregaría al arreglo pero con undefined, porque aún no tenemos validaciones para revisar eso.
+
+**5. Responder: ¿en qué archivo vive hoy toda la lógica de la práctica?**
+En app.controller.ts
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
