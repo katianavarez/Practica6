@@ -21,6 +21,24 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+## Preguntas Práctica 7.
+**1. Responder: ¿por qué esta interfaz no menciona Express, NestJS ni memoria?**
+Porque la interfaz solo es el contrato, no cómo se implementan, sirve para después poder cambiar el repositorio sin modificar la interfaz ni el service.
+
+**2. Responder: ¿qué palabra de esa clase es la que promete cumplir la interfaz del paso anterior?**
+Implements
+
+**3. Responder: ¿por qué este archivo no sabe qué es una petición HTTP?**
+Porque el service solo tiene lógica de negocio, usa datos de TypeScript, como number y dto, no de HTTP (rutas, body).
+
+**4. Responder: ¿por qué el Service se inyecta sin token en el Controller, y el repositorio sí necesita uno?**
+Porque el service es una clase y si existe en tiempo de ejecución, y la interfaz no
+
+**5. Responder: ¿qué prueba, en los hechos, que agregar Miembros no rompió nada de Inscripciones?**
+Que las rutas de lo que ya tenía antes, como inscripciones, sigue funcionando bien, igual que antes de agregar el módulo de miembros.
+
+
+
 ## Preguntas Práctica 6.
 **1. Responder: ¿qué pasaría si el módulo no quedara registrado en la raíz?**
 Si no metiera el módulo en el imports del AppModule, nest no sabría que existe, entonces las rutas de ese controller no funcionarían, ni se podría inyectar su service en otro lado.
