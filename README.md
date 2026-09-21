@@ -21,6 +21,15 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+## Preguntas Asignación 1 Horarios
+**1. Responder: ¿por qué el Service se inyecta sin token en el Controller, y el repositorio sí necesita uno?**
+Porque el service es una clase y sí existe en tiempo de ejecución, y el repositorio es una interfaz y no existe en tiempo de ejecución
+
+**2. Responder: si mandas un claseId que no es número, ¿qué código de estado esperarías, y por qué este Controller no lo detecta?**
+Un 400, porque claseId: number es un tipo de typescript y esos tipos se borran al compilar, en tiempo de ejecución no existe esa interfaz y no hay ningún if que valide ese dato.
+
+
+
 ## Preguntas Práctica 7.
 **1. Responder: ¿por qué esta interfaz no menciona Express, NestJS ni memoria?**
 Porque la interfaz solo es el contrato, no cómo se implementan, sirve para después poder cambiar el repositorio sin modificar la interfaz ni el service.
